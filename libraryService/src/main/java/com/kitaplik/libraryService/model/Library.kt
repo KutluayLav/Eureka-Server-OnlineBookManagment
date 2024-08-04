@@ -1,7 +1,7 @@
 package com.kitaplik.libraryService.model
 
-import jakarta.persistence.*
 import org.hibernate.annotations.GenericGenerator
+import javax.persistence.*
 
 
 @Entity

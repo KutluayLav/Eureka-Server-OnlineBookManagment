@@ -1,12 +1,10 @@
 package com.kitaplik.libraryService.controller;
 
+import com.kitaplik.libraryService.dto.AddBookRequest;
 import com.kitaplik.libraryService.dto.LibraryDto;
 import com.kitaplik.libraryService.service.LibraryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/library")
@@ -18,10 +16,20 @@ public class LibraryController {
         this.libraryService = libraryService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<LibraryDto> getLibraryById(@PathVariable String id){
         return ResponseEntity.ok(libraryService.getAllBooksInLibraryById(id));
     }
 
+    @PostMapping
+    public ResponseEntity<LibraryDto> createLibrary(){
+        return ResponseEntity.ok(libraryService.createLibrary());
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> addBookToLibrary(@RequestBody AddBookRequest addBookRequest){
+        libraryService.addBookToLibrary(addBookRequest);
+        return ResponseEntity.ok().build();
+    }
 
 }
