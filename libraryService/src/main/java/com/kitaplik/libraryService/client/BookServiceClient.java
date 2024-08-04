@@ -13,7 +13,7 @@ public interface BookServiceClient {
     @GetMapping("/isbn/{isbn}")
     ResponseEntity<BookIdDto> getBookByIsbn(@PathVariable  String isbn);
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<BookDto> getBookById(@PathVariable String id);
 
 
